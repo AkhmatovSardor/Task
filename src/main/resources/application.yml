@@ -9,3 +9,14 @@ spring:
             ddl-auto: update
         show-sql: true
         database: postgresql
+
+springdoc:
+    swagger-ui:
+        path: /swagger-ui.html
+        operationsSorter: method
+        tryItOutEnabled: true
+        filter: true
+        tagsSorter: alpha
+    api-docs:
+        path: /v3/api-docs
+        enabled: true
