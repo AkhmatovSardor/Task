@@ -1,0 +1,17 @@
+2024-02-18 10:47:13 - Starting TaskApplicationTests using Java 17.0.8.1 with PID 77617 (started by sardor in /home/sardor/Backend/Project/My Projects/Task)
+2024-02-18 10:47:13 - No active profile set, falling back to 1 default profile: "default"
+2024-02-18 10:47:13 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-02-18 10:47:13 - Finished Spring Data repository scanning in 30 ms. Found 3 JPA repository interfaces.
+2024-02-18 10:47:14 - HikariPool-1 - Starting...
+2024-02-18 10:47:14 - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@30fbc23
+2024-02-18 10:47:14 - HikariPool-1 - Start completed.
+2024-02-18 10:47:14 - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL95Dialect
+2024-02-18 10:47:14 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-02-18 10:47:14 - Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.company.Task.repository.BookRepository
+2024-02-18 10:47:14 - Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.company.Task.repository.CustomerRepository
+2024-02-18 10:47:14 - Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.company.Task.repository.OrderRepository
+2024-02-18 10:47:15 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-02-18 10:47:15 - Started TaskApplicationTests in 2.638 seconds (process running for 3.107)
+2024-02-18 10:47:15 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-02-18 10:47:15 - HikariPool-1 - Shutdown initiated...
+2024-02-18 10:47:15 - HikariPool-1 - Shutdown completed.

@@ -17,7 +17,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
                 contact = @Contact(name = "developers telegram account",
                         url = "https://t.me/java_developer09"),
                 license = @License(name = "License",
-                        url = "http://185.196.213.118:8082/swagger-ui/index.html#/"),
+                        url = "http://localhost:8083/swagger-ui/index.html#/"),
                 version = "version-3.0.2"),
         tags = {
                 @Tag(
