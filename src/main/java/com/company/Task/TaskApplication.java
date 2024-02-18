@@ -19,9 +19,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
                 license = @License(name = "License",
                         url = "http://185.196.213.118:8082/swagger-ui/index.html#/"),
                 version = "version-3.0.2"),
-        tags = {@Tag(
-                name = "Get-all",
-                description = "get-all"),
+        tags = {
                 @Tag(
                         name = "Get",
                         description = "get"),
@@ -37,12 +35,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
         },
         servers = @Server(
                 // url = "http://185.196.213.118:8082",
-                url = "http://localhost:8080",
+                url = "http://localhost:8083",
                 description = "Task host")
 )
 public class TaskApplication {
     public static void main(String[] args) {
         SpringApplication.run(TaskApplication.class, args);
     }
-
 }

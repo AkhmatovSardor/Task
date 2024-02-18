@@ -1,5 +1,4 @@
 package com.company.Task.dto;
-import com.company.Task.exception.Errors;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;
 import lombok.Getter;
@@ -16,5 +15,5 @@ public class Response<T> {
     private String message;
     private boolean success;
     private T data;
-   // private Errors errors;
+    private List<ErrorDto> errors;
 }

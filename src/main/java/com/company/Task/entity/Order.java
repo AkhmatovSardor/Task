@@ -7,7 +7,6 @@ import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 @Getter
@@ -30,9 +29,7 @@ public class Order {
             inverseJoinColumns = @JoinColumn(name = ("bookId")))
     private List<Book> books;
 
-    Date orderData;
+    LocalDateTime orderData;
 
     LocalDateTime createdAt;
-    LocalDateTime updatedAt;
-    LocalDateTime deletedAt;
 }

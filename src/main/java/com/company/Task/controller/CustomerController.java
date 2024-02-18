@@ -1,7 +1,7 @@
 package com.company.Task.controller;
 
 import com.company.Task.dto.CustomerDto;
-import com.company.Task.dto.MyCrud;
+import com.company.Task.dto.Crud;
 import com.company.Task.dto.Response;
 import com.company.Task.service.CustomerService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("customer")
-public class CustomerController implements MyCrud<Long, CustomerDto> {
+public class CustomerController implements Crud<Long, CustomerDto> {
     @Autowired
     private CustomerService customerService;
 

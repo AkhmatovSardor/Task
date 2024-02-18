@@ -6,10 +6,9 @@ spring:
         driver-class-name: org.postgresql.Driver
     jpa:
         hibernate:
-            ddl-auto: update
+          ddl-auto: update
         show-sql: true
         database: postgresql
-
 springdoc:
     swagger-ui:
         path: /swagger-ui.html
@@ -20,3 +19,14 @@ springdoc:
     api-docs:
         path: /v3/api-docs
         enabled: true
+server:
+    port: 8083
+
+logging:
+        pattern:
+            file: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+        file:
+            name: logs.log
+        level:
+            org.springframework.web: ERROR
+            org.hibernate: ERROR

@@ -1,12 +1,15 @@
 package com.company.Task.service;
 
+import com.company.Task.dto.Crud;
 import com.company.Task.dto.CustomerDto;
-import com.company.Task.dto.MyCrud;
+import com.company.Task.dto.OrderRequest;
 import com.company.Task.dto.Response;
-import com.company.Task.exception.Errors;
+import com.company.Task.exception.LogicException;
+import com.company.Task.exception.ServiceException;
 import com.company.Task.mapper.CustomerMapper;
 import com.company.Task.repository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +17,7 @@ import java.time.LocalDateTime;
 
 @Service
 @RequiredArgsConstructor
-public class CustomerService implements MyCrud<Long, CustomerDto> {
+public class CustomerService implements Crud<Long, CustomerDto> {
     private final CustomerMapper customerMapper;
     private final CustomerRepository customerRepository;
 
@@ -28,13 +31,14 @@ public class CustomerService implements MyCrud<Long, CustomerDto> {
                     .data(customerMapper.toDto(customerRepository.save(customerMapper.toEntity(value))))
                     .build();
         } catch (Exception e) {
-            throw new Errors(Response.<CustomerDto>builder()
+            throw new ServiceException(Response.<CustomerDto>builder()
                     .message(String.format("While saving error %s", e.getMessage()))
                     .code(HttpStatus.EXPECTATION_FAILED.value())
                     .build());
         }
     }
 
+    @SneakyThrows
     @Override
     public Response<CustomerDto> get(Long key) {
         return customerRepository.findByCustomerIdAndDeletedAtIsNull(key)
@@ -69,10 +73,10 @@ public class CustomerService implements MyCrud<Long, CustomerDto> {
                             .message(String.format("With %d id customer not found!", key))
                             .build());
         } catch (Exception e) {
-            throw new Errors(Response.<CustomerDto>builder()
+            return Response.<CustomerDto>builder()
                     .message(String.format("While updating error %s", e.getMessage()))
                     .code(HttpStatus.EXPECTATION_FAILED.value())
-                    .build());
+                    .build();
         }
     }
 
@@ -95,10 +99,21 @@ public class CustomerService implements MyCrud<Long, CustomerDto> {
                             .message(String.format("With %d id customer not found!", key))
                             .build());
         } catch (Exception e) {
-            throw new Errors(Response.<CustomerDto>builder()
+            throw new ServiceException(Response.<CustomerDto>builder()
                     .message(String.format("While deleting error %s", e.getMessage()))
                     .code(HttpStatus.EXPECTATION_FAILED.value())
                     .build());
+        }
+    }
+
+    @SneakyThrows
+    public CustomerDto custom(OrderRequest value) {
+        if (get(value.getCustomerId()).getData() != null) {
+            return customerMapper.toDto(customerRepository.save(
+                    customerMapper.toEntityForOrder(get(value.getCustomerId()).getData(), value.getBookIds()))
+            );
+        } else {
+            throw new LogicException("Customer not found with id " + value.getCustomerId());
         }
     }
 }

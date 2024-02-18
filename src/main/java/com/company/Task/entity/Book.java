@@ -22,7 +22,6 @@ public class Book {
     String genre;
     Double price;
     Integer quantityInStock;
-
     LocalDateTime createdAt;
     LocalDateTime updatedAt;
     LocalDateTime deletedAt;
